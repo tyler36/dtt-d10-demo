@@ -1,0 +1,7 @@
+version: '3.6'
+services:
+  web:
+    volumes:
+      - "$HOME/code/drupal/modules:/var/modules"
+      - "$HOME/code/drupal/themes:/var/themes"
+      - "$HOME/code/drupal/MRs:/var/MRs"
