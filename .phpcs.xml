@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drupal_core">
+  <description>Default PHP CodeSniffer configuration for Drupal core.</description>
+  <file>.</file>
+
+  <!--  Turn colors ON  -->
+  <arg name="colors"/>
+
+  <!-- Additional file types -->
+  <arg name="extensions" value="css,info,inc,install,module,php,profile,md,test,theme,txt,yml"/>
+
+  <!--Exclude third party code.-->
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <!--Exclude folders used by common frontend tools. These folders match the file_scan_ignore_directories setting in default.settings.php-->
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/bower_components/*</exclude-pattern>
+
+  <!-- Exclude core and contributed modules since they should not be hacked by us-->
+  <exclude-pattern>*/core/*</exclude-pattern>
+  <exclude-pattern>*/contrib/*</exclude-pattern>
+
+  <!-- Exclude compiled assests -->
+  <exclude-pattern>/web/sites/default/files</exclude-pattern>
+  <exclude-pattern>./web/sites/simpletest/*</exclude-pattern>
+
+  <!-- Exclude DDEV files -->
+  <exclude-pattern>.ddev/*</exclude-pattern>
+  <exclude-pattern>web/sites/default/settings.ddev.php</exclude-pattern>
+  <!-- Logs -->
+  <exclude-pattern>logs/*</exclude-pattern>
+  <exclude-pattern>rector.php</exclude-pattern>
+
+  <rule ref="Drupal" />
+  <rule ref="DrupalPractice" />
+
+  <rule ref="Drupal.Files.TxtFileLineLength.TooLong">
+    <!-- Exclude .md files from the line limit rule. -->
+    <exclude-pattern>\.md</exclude-pattern>
+  </rule>
+
+  <!-- OVERRIDE: Test method names do not need to be Camel Caps -->
+  <rule ref="Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps">
+      <exclude-pattern>*/tests/*</exclude-pattern>
+  </rule>
+  <rule ref="Drupal.Commenting.DocComment.MissingShort">
+      <exclude-pattern>*Test.php</exclude-pattern>
+  </rule>
+</ruleset>
