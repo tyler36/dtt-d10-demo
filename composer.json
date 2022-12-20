@@ -96,6 +96,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
         "drupal/coder": "^8.3",
         "drupal/core-dev": "^10.0",
+        "drush/drush": "^11.4",
         "jangregor/phpstan-prophecy": "^1.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpspec/prophecy-phpunit": "^2.0",
