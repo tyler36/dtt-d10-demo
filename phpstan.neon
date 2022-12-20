@@ -1,0 +1,48 @@
+includes:
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    # All other extensions are auto-installed by phpstan/extension-installer
+    # - vendor/mglaman/phpstan-drupal/extension.neon
+    # - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    # - vendor/jangregor/phpstan-prophecy/extension.neon
+
+parameters:
+    # Test level
+    level: 5
+
+    # Target additional Drupal-filetypes
+    fileExtensions:
+        - php
+        - module
+        - install
+        - inc
+
+    paths:
+        - web/modules/custom
+        - web/themes
+        - web/sites
+
+    excludePaths:
+        analyse:
+            - web/core/*
+            - web/*/contrib
+            - web/sites/default/files/*
+            - web/sites/simpletest
+            - vendor/*
+
+    universalObjectCratesClasses:
+        - Drupal\Core\Entity\EntityInterface
+
+    ignoreErrors:
+        # new static() is a best practice in Drupal, so we cannot fix that.
+        - "#^Unsafe usage of new static#"
+
+        -
+            message: '#Variable \$app_root might not be defined\.#'
+            paths:
+                - web/sites/default/settings.php
+                - web/sites/default/default.settings.php
+        -
+            message: '#Variable \$site_path might not be defined\.#'
+            paths:
+                - web/sites/default/settings.php
+                - web/sites/default/default.settings.php
