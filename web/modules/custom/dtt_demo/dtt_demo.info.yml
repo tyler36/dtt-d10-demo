@@ -1,0 +1,4 @@
+name: DTT Demo module
+description: Container module for storing tests.
+type: module
+core_version_requirement: ^9.2 || ^10

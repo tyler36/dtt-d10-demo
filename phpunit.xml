@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="web/core/tests/bootstrap.php" colors="true" beStrictAboutTestsThatDoNotTestAnything="true" beStrictAboutOutputDuringTests="true" beStrictAboutChangesToGlobalState="true" failOnWarning="true" printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter" cacheResult="true">
+<phpunit bootstrap="vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php" colors="true" beStrictAboutTestsThatDoNotTestAnything="true" beStrictAboutOutputDuringTests="true" beStrictAboutChangesToGlobalState="true" failOnWarning="true" printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter" cacheResult="true">
   <php>
     <ini name="error_reporting" value="32767"/>
     <ini name="memory_limit" value="-1"/>
@@ -18,6 +18,24 @@
     <testsuite name="custom">
       <directory>./web/modules/custom/*/tests</directory>
       <directory>./web/modules/custom/*/modules/*/tests</directory>
+    </testsuite>
+    <testsuite name="unit">
+      <directory>./web/modules/custom/*/tests/src/Unit</directory>
+    </testsuite>
+    <testsuite name="kernel">
+      <directory>./web/modules/custom/*/tests/src/Kernel</directory>
+    </testsuite>
+    <testsuite name="functional">
+      <directory>./web/modules/custom/*/tests/src/Functional</directory>
+    </testsuite>
+    <testsuite name="functionalJavascript">
+      <directory>./web/modules/custom/*/tests/src/FunctionalJavascript</directory>
+    </testsuite>
+    <testsuite name="existing-site">
+      <directory>./web/modules/custom/*/tests/src/ExistingSite</directory>
+    </testsuite>
+    <testsuite name="existing-site-javascript">
+      <directory>./web/modules/custom/*/tests/src/ExistingSiteJavascript</directory>
     </testsuite>
   </testsuites>
   <listeners>
